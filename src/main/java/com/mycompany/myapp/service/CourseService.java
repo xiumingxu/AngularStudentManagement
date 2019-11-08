@@ -7,10 +7,7 @@ import com.mycompany.myapp.domain.dto.CourseDto;
 import com.mycompany.myapp.domain.dto.CourseWithTNDto;
 import com.mycompany.myapp.repository.CourseRepository;
 import com.mycompany.myapp.repository.UserCourseRepository;
-import org.checkerframework.checker.units.qual.A;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -123,21 +120,17 @@ public class CourseService {
 
     }
 
-    public void addCourseToStudent(UserCourse userCourse) throws Exception {
+    public void addCourseToStudent(UserCourse c1) throws Exception {
 
         Optional<User> curUser = userService.getUserWithAuthorities();
         // 2 find course from course table
 
 
         UserCourse t1 =  UserCourse.builder()
-            .course(c1)
-            .user(curUser)
+            .course(c1.getCourse())
+            .user(curUser.get())
             .build();
 
-        try {
-            UserCourseRepository.saveAndFlush(t1);
-        } catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
+//
     }
 }

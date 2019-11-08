@@ -2,7 +2,7 @@ package com.mycompany.myapp.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -14,9 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "course")
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Course {
     @Id
